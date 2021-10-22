@@ -36,6 +36,11 @@ body{
     font-size: 80px;
     font-weight: 300;
     margin-bottom: 50px;
+} 
+ 
+label {
+    text-align: center;
+    padding-left: 40px;
 }
 
 input,

@@ -3,8 +3,9 @@ const greeting = document.querySelector('.greeting');
 window.onload = () => {
     if(!localStorage.getItem("username")){
         location.href = '/login.html';
-    } else{
-        greeting.innerHTML = `hello ${localStorage.getItem("username")}`;
+    } else {
+        location.href = '/index.html';
+        greeting.innerHTML = `Hi ${localStorage.getItem("username")}!`;
     }
 }
 

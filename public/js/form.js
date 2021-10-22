@@ -8,7 +8,7 @@ form.forEach((item, i) => {
 });
 
 window.onload = () => {
-    if(localStorage.username){
+    if(localStorage.getItem("username")){
         location.href = '/';
     }
 };
@@ -20,20 +20,21 @@ const password = document.querySelector('.password');
 const submitBtn = document.querySelector('.submit-btn');
 // const email = document.querySelector('.email');
 
+
 if(username == null){ //or return, it means value is open
     submitBtn.addEventListener('click', () => {
         const config = {
             method: 'post',
             headers: new Headers({'Content-Type': 'application/json'}),
             body: JSON.stringify({
-                // email: email.value,
                 password: password.value
+                // email: email.value,
             })
         };
         fetch('/login', config)
           .then(res => res.json())
-          .then(data => {
-              validateData(data);
+          .catch(err => {
+              console.log(err);
           })
     })
 } else {  //or return
@@ -43,15 +44,15 @@ if(username == null){ //or return, it means value is open
             method: 'post',
             headers: new Headers({'Content-Type': 'application/json'}),
             body: JSON.stringify({
-                username: username.value,
-                // email: email.value,
+                username: username.value, 
                 password: password.value
+                // email: email.value,
             })
         };
         fetch('/register', config)
           .then(res => res.json())
-          .then(data => {
-            validateData(data);
+          .catch(err => {
+            console.log(err);
         })
     })
 }
